@@ -42,6 +42,7 @@ class ChatBottomTextField extends StatelessWidget {
                   border: InputBorder.none,
                 ),
                 expands: true,
+                textAlignVertical: TextAlignVertical.center,
                 controller: textEditingController,
                 focusNode: focusNode,
                 minLines: null,

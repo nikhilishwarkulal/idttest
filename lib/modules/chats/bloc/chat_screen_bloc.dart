@@ -89,7 +89,7 @@ class ChatScreenBloc extends Bloc<ChatScreenViewModel> {
     jumpToEnd(controller);
   }
 
-  double oldScollingOffset = 0;
+  double oldScrollingOffset = 0;
 
   ///[jumpToEnd] will scroll down to the end of the chat
   ///[ScrollController] will scroll down to end of the
@@ -99,13 +99,13 @@ class ChatScreenBloc extends Bloc<ChatScreenViewModel> {
     Future.delayed(
       Duration(milliseconds: milliseconds ?? 300),
       () {
-        if (oldScollingOffset == controller.offset) {
+        if (oldScrollingOffset == controller.offset) {
           controller.jumpTo(controller.position.maxScrollExtent);
           state.jumperController.jump(controller);
         } else {
           state.jumperController.unJump();
         }
-        oldScollingOffset = controller.position.maxScrollExtent;
+        oldScrollingOffset = controller.position.maxScrollExtent;
       },
     );
   }

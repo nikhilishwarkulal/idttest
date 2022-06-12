@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:idttest/common/app_text_style.dart';
+import 'package:idttest/common/i18n/app_localisation_strings.dart';
 import 'package:idttest/common/widgets/custom_app_bar/custom_app_bar.dart';
 import 'package:idttest/common/widgets/custom_app_bar/custom_app_bar_actions.dart';
 import 'package:idttest/common/widgets/error_screen/error_screen.dart';
 import 'package:idttest/common/widgets/loading_screen/error_screen.dart';
 import 'package:idttest/core/bloc/bloc_builder.dart';
+import 'package:idttest/core/translation/localisation.dart';
 import 'package:idttest/modules/chats/bloc/chat_screen_bloc.dart';
 import 'package:idttest/modules/chats/view/widgets/chat_bottom_textfield.dart';
 import 'package:idttest/modules/chats/view/widgets/chat_cell.dart';
@@ -51,6 +53,13 @@ class _ChatScreenState extends State<ChatScreen> {
           textWidget: BlocBuilder(
               bloc: chatScreenBloc,
               builder: () {
+                if (chatScreenBloc.state.chatScreenViewModelState ==
+                    ChatScreenViewModelState.initial) {
+                  return Text(
+                    getTranslated(AppLocalizationsStrings.chatAppBarTitle),
+                    style: AppTextStyle.kAppBarHeader,
+                  );
+                }
                 return Text(
                   argumentModel.topic,
                   style: AppTextStyle.kAppBarHeader,
